@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,9 @@ class Login extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               authService.signInWithEmailAndPassword(
-                  emailController.text, passwordController.text);
+                emailController.text,
+                passwordController.text,
+              );
             },
             child: Text('Login'),
           ),

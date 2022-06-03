@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:quotidiant_app/models/user.dart';
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:provider/provider.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
 
 class Register extends StatelessWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +40,15 @@ class Register extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
-            child: Text('Login'),
-          ),
-          ElevatedButton(
             onPressed: () async {
               await authService.createUserWithEmailAndPassword(
-                  emailController.text, passwordController.text);
-              Navigator.pushNamed(context, '/register');
+                emailController.text,
+                passwordController.text,
+              );
+              Navigator.pop(context);
             },
             child: Text('Register'),
-          ),
+          )
         ],
       ),
     );
