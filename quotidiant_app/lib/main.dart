@@ -1,10 +1,32 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quotidiant_app/screens/authenticate/login.dart';
+import 'package:quotidiant_app/screens/home/home.dart';
+import 'package:quotidiant_app/screens/likes/likes.dart';
+import 'package:quotidiant_app/screens/settings/settings.dart';
+import 'package:quotidiant_app/screens/topics/topics.dart';
+import 'package:quotidiant_app/screens/wrapper.dart';
+import 'package:quotidiant_app/services/authentication_service.dart';
 
-void main() async {
+import 'screens/authenticate/register.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: 'AIzaSyBULkEQQc79zNLmUuqUC448darQuzYyHkA',
+          appId: '1:341152015809:android:afbc24e2b7cb1d94bbbb40',
+          messagingSenderId: '341152015809',
+          projectId: 'quotidiant-app'));
   runApp(const MyApp());
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
 }
 
 class MyApp extends StatelessWidget {
@@ -13,25 +35,31 @@ class MyApp extends StatelessWidget {
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quotidiant',
-      theme: ThemeData(
-        primaryColor: Colors.blueGrey,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_) => AuthenticationService(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Quotidiant',
+        theme: ThemeData(
+          primaryColor: Colors.blueGrey,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+        ),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Wrapper(),
+          '/login': (context) => Login(),
+          '/register': (context) => Register(),
+          '/likes': (context) => Likes(),
+        },
       ),
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
     );
   }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -164,86 +192,86 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+// class Home extends StatelessWidget {
+//   const Home({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Home Page",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Center(
+//         child: Text(
+//           "Home Page",
+//           style: TextStyle(
+//             color: Colors.green[900],
+//             fontSize: 45,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class Likes extends StatelessWidget {
-  const Likes({Key? key}) : super(key: key);
+// class Likes extends StatelessWidget {
+//   const Likes({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Likes",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Center(
+//         child: Text(
+//           "Likes",
+//           style: TextStyle(
+//             color: Colors.green[900],
+//             fontSize: 45,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class Topics extends StatelessWidget {
-  const Topics({Key? key}) : super(key: key);
+// class Topics extends StatelessWidget {
+//   const Topics({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Topics",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Center(
+//         child: Text(
+//           "Topics",
+//           style: TextStyle(
+//             color: Colors.green[900],
+//             fontSize: 45,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class Settings extends StatelessWidget {
-  const Settings({Key? key}) : super(key: key);
+// class Settings extends StatelessWidget {
+//   const Settings({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Settings",
-          style: TextStyle(
-            color: Colors.green[900],
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Center(
+//         child: Text(
+//           "Settings",
+//           style: TextStyle(
+//             color: Colors.green[900],
+//             fontSize: 45,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
