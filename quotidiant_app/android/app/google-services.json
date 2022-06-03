@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "341152015809",
+    "project_id": "quotidiant-app",
+    "storage_bucket": "quotidiant-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341152015809:android:afbc24e2b7cb1d94bbbb40",
+        "android_client_info": {
+          "package_name": "com.example.quotidiant_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341152015809-3gi2blcd419tmp98shp5en15idir69hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBULkEQQc79zNLmUuqUC448darQuzYyHkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341152015809-3gi2blcd419tmp98shp5en15idir69hb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "341152015809-vsdjgmcfiqak5t9fbh3vo7c18gkv3k3c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.quotidiantApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
