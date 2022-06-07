@@ -8,17 +8,16 @@ import 'package:quotidiant_app/screens/settings/settings.dart';
 import 'package:quotidiant_app/screens/topics/topics.dart';
 import 'package:quotidiant_app/screens/wrapper.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'screens/authenticate/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
-          apiKey: 'AIzaSyBULkEQQc79zNLmUuqUC448darQuzYyHkA',
-          appId: '1:341152015809:android:afbc24e2b7cb1d94bbbb40',
-          messagingSenderId: '341152015809',
-          projectId: 'quotidiant-app'));
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
