@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quotidiant_app/models/random_year.dart';
+import 'package:quotidiant_app/repository/random_year_repo.dart';
 
 class Topics extends StatelessWidget {
   const Topics({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
