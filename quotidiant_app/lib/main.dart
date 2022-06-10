@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quotidiant_app/screens/authenticate/login.dart';
 import 'package:quotidiant_app/screens/home/home.dart';
 import 'package:quotidiant_app/screens/likes/likes.dart';
+import 'package:quotidiant_app/screens/notifications/notifications.dart';
 import 'package:quotidiant_app/screens/settings/settings.dart';
 import 'package:quotidiant_app/screens/topics/topics.dart';
 import 'package:quotidiant_app/screens/wrapper.dart';
@@ -75,6 +76,7 @@ class _HomePageState extends State<HomePage> {
   final pages = [
     const Home(),
     const Likes(),
+    const Notifications(),
     const Topics(),
     const Settings(),
   ];
@@ -159,6 +161,25 @@ class _HomePageState extends State<HomePage> {
               },
               icon: pageIndex == 2
                   ? const Icon(
+                      Icons.notification_add_rounded,
+                      color: Colors.white,
+                      size: 35,
+                    )
+                  : const Icon(
+                      Icons.notification_add_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+            ),
+            IconButton(
+              enableFeedback: false,
+              onPressed: () {
+                setState(() {
+                  pageIndex = 3;
+                });
+              },
+              icon: pageIndex == 3
+                  ? const Icon(
                       Icons.anchor_rounded,
                       color: Colors.white,
                       size: 35,
@@ -173,10 +194,10 @@ class _HomePageState extends State<HomePage> {
               enableFeedback: false,
               onPressed: () {
                 setState(() {
-                  pageIndex = 3;
+                  pageIndex = 4;
                 });
               },
-              icon: pageIndex == 3
+              icon: pageIndex == 4
                   ? const Icon(
                       Icons.settings_applications_rounded,
                       color: Colors.white,
