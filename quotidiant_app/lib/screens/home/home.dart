@@ -16,6 +16,7 @@ class Home extends StatelessWidget {
             color: Colors.green[900],
             fontSize: 45,
             fontWeight: FontWeight.w500,
+            //change color to blue for background
           ),
         ),
       ),
