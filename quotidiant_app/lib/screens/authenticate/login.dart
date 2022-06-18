@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quotidiant_app/models/user.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
 
 class Login extends StatelessWidget {
