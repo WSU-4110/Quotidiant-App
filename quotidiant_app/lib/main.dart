@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
   final pages = [
-    const Home(),
+    Home(),
     const Likes(),
     const Notifications(),
     const Topics(),
