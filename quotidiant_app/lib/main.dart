@@ -12,6 +12,10 @@ import 'package:quotidiant_app/services/authentication_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
+import 'package:quotidiant_app/screens/theme/themeapp.dart';
+import 'package:quotidiant_app/screens/theme/ThemeModel.dart';
+import 'package:quotidiant_app/screens/theme/defaulttheme.dart';
+
 import 'screens/authenticate/register.dart';
 
 Future<void> main() async {
@@ -37,6 +41,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ThemeModel>(
+          create: (BuildContext context) => ThemeModel(),
+        ),
         Provider<AuthenticationService>(
           create: (_) => AuthenticationService(),
         ),
