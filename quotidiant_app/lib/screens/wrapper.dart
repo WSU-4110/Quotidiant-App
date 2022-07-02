@@ -4,6 +4,7 @@ import 'package:quotidiant_app/main.dart';
 import 'package:quotidiant_app/models/user.dart';
 import 'package:quotidiant_app/screens/authenticate/login.dart';
 import 'package:quotidiant_app/screens/home/home.dart';
+import 'package:quotidiant_app/screens/splashscreen/splashscreen.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
 
 class Wrapper extends StatelessWidget {
@@ -17,7 +18,7 @@ class Wrapper extends StatelessWidget {
       builder: (_, AsyncSnapshot<User?> snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final User? user = snapshot.data;
-          return user == null ? Login() : HomePage();
+          return user == null ? SplashScreenWidget() : HomePage();
         } else {
           return Scaffold(
             body: Center(
