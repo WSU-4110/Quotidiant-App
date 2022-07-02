@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => Home(),
           '/login': (context) => Login(),
           '/register': (context) => Register(),
+          '/Topics': (context) => Topics(),
           '/likes': (context) => Likes(),
         },
       ),
