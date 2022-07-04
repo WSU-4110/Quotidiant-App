@@ -1,104 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:quotidiant_app/models/randomfacts.dart';
-import 'package:quotidiant_app/models/colors.dart';
 
-void main() => runApp(new MaterialApp(
-      home: new Home(),
-      debugShowCheckedModeBanner: false,
-    ));
+void main() => runApp(MaterialApp(home: Home()));
 
 class Home extends StatefulWidget {
+  Home({Key? key}) : super(key: key);
   @override
-  _HomeState createState() => new _HomeState();
+  _FactListState createState() => _FactListState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  late Animation animation;
-  late AnimationController animationController;
-  int factcounter = 0;
-  int colorcounter = 0;
-  @override
-  void initState() {
-    super.initState();
-    animationController = new AnimationController(
-        vsync: this, duration: new Duration(seconds: 2));
-    animation = new CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn);
-    animation.addListener(() {
-      this.setState(() {});
-    });
-    animationController.forward();
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  void showfacts() {
-    setState(() {
-      dispfact = facts[factcounter];
-      dispcolor = bgcolors[colorcounter];
-      factcounter = factcounter < facts.length - 1 ? factcounter + 1 : 0;
-      colorcounter = colorcounter < bgcolors.length - 1 ? colorcounter + 1 : 0;
-      animationController.reset();
-      animationController.forward();
-    });
-  }
+class _FactListState extends State<Home> {
+  List<String> facts = [
+    'Food Fact: Honey is the only food that does not spoil',
+    'History Fact: There is 5,000 years equivelent of recorded history',
+    'Science Fact: There are 206 bones in the adult human body and 300 in a childs developing body'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: dispcolor,
-      body: new Padding(
-        padding: const EdgeInsets.symmetric(vertical: 75.0),
-        child: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              new Align(
-                  alignment: Alignment.topLeft,
-                  child: new Padding(
-                    padding: const EdgeInsets.only(left: 30.0),
-                    child: new Text(
-                      "Did you Know?",
-                      style: new TextStyle(color: Colors.white, fontSize: 30.0),
-                    ),
-                  )),
-              new Padding(
-                padding:
-                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 60.0),
-                child: new Opacity(
-                  opacity: animation.value * 1,
-                  child: new Transform(
-                      transform: new Matrix4.translationValues(
-                          0.0, animation.value * -50.0, 0.0),
-                      child: new Text(
-                        dispfact,
-                        style: new TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w300),
-                      )),
-                ),
-              ),
-              new MaterialButton(
-                color: Colors.white,
-                minWidth: 160.0,
-                child: new Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 60.0, vertical: 18.0),
-                  child: new Text(
-                    "Show Another Fun Fact",
-                    style: new TextStyle(fontSize: 15.0, color: dispcolor),
-                  ),
-                ),
-                onPressed: showfacts,
-              )
-            ],
-          ),
-        ),
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text('Random Facts'),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
+      ),
+      body: Column(
+        children: facts.map((quote) => Text(quote)).toList(),
       ),
     );
   }
