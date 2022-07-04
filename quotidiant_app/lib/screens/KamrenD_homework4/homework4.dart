@@ -1,39 +1,13 @@
-import 'dart:async';
+import 'pattern/switcher.dart';
+import 'states/one.dart';
 
-import 'istate.dart';
-import 'states/loading_state.dart';
-import 'states/no_results_state.dart';
+void main() {
+  final switcher = Switcher(
+    initState: One(),
+  );
 
-class StateContext {
-  final _stateStream = StreamController<IState>();
-  Sink<IState> get _inState => _stateStream.sink;
-  Stream<IState> get outState => _stateStream.stream;
-
-  late IState _currentState;
-
-  StateContext() {
-    _currentState = NoResultsState();
-    _addCurrentStateToStream();
-  }
-
-  void dispose() {
-    _stateStream.close();
-  }
-
-  void setState(IState state) {
-    _currentState = state;
-    _addCurrentStateToStream();
-  }
-
-  void _addCurrentStateToStream() {
-    _inState.add(_currentState);
-  }
-
-  Future<void> nextState() async {
-    await _currentState.nextState(this);
-
-    if (_currentState is LoadingState) {
-      await _currentState.nextState(this);
-    }
-  }
+  switcher.call(); // call(1): One
+  switcher.call(); // call(2): Two
+  switcher.call(); // call(3): Three
+  switcher.call(); // call:(4) One
 }
