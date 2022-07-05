@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quotidiant_app/screens/authenticate/login.dart';
+
 import 'package:quotidiant_app/screens/home/home.dart';
 import 'package:quotidiant_app/screens/likes/likes.dart';
 import 'package:quotidiant_app/screens/notifications/notifications.dart';
+import 'package:quotidiant_app/screens/screens.dart';
 import 'package:quotidiant_app/screens/settings/settings.dart';
 import 'package:quotidiant_app/screens/topics/topics.dart';
-import 'package:quotidiant_app/screens/wrapper.dart';
-import 'package:quotidiant_app/services/authentication_service.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -16,56 +16,64 @@ import 'package:quotidiant_app/screens/theme/themeapp.dart';
 import 'package:quotidiant_app/screens/theme/ThemeModel.dart';
 import 'package:quotidiant_app/screens/theme/defaulttheme.dart';
 
-import 'screens/authenticate/register.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flow_builder/flow_builder.dart';
+import '/repositories/repositories.dart';
+import '/bloc_observer.dart';
+import '/blocs/blocs.dart';
+import 'config/routes.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+Future<void> main() {
+  return BlocOverrides.runZoned(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+
+      final authRepository = AuthRepository();
+      runApp(App(authRepository: authRepository));
+    },
+    blocObserver: AppBlocObserver(),
   );
-  runApp(const MyApp());
 }
 
-// class HomePage extends StatefulWidget {
-//   const HomePage({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({
+    Key? key,
+    required AuthRepository authRepository,
+  })  : _authRepository = authRepository,
+        super(key: key);
 
-//   @override
-//   _HomePageState createState() => _HomePageState();
-// }
+  final AuthRepository _authRepository;
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ThemeModel>(
-          create: (BuildContext context) => ThemeModel(),
+    return RepositoryProvider.value(
+      value: _authRepository,
+      child: BlocProvider(
+        create: (_) => AuthBloc(
+          authRepository: _authRepository,
         ),
-        Provider<AuthenticationService>(
-          create: (_) => AuthenticationService(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Quotidiant',
-        theme: ThemeData(
-          primaryColor: Colors.blueGrey,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-        ),
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => Wrapper(),
-          '/home': (context) => Home(),
-          '/login': (context) => Login(),
-          '/register': (context) => Register(),
-          '/Topics': (context) => Topics(),
-          '/likes': (context) => Likes(),
-        },
+        child: const AppView(),
+      ),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  const AppView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FlowBuilder<AuthStatus>(
+        state: context.select((AuthBloc bloc) => bloc.state.status),
+        onGeneratePages: onGenerateAppViewPages,
       ),
     );
   }
