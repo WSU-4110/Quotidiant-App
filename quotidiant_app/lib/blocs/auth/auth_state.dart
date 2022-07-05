@@ -1,5 +1,7 @@
 part of 'auth_bloc.dart';
 
+// Assignment 4
+
 enum AuthStatus { authenticated, unauthenticated }
 
 class AuthState extends Equatable {
@@ -21,6 +23,5 @@ class AuthState extends Equatable {
       : this._(status: AuthStatus.unauthenticated);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [status, user];
 }
