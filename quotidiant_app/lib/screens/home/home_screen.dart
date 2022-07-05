@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        // added log out button to AppBar
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),

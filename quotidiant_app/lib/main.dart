@@ -136,6 +136,12 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            onPressed: () => context.read<AuthBloc>().add(AppLogoutRequested()),
+            icon: const Icon(Icons.exit_to_app),
+          )
+        ],
       ),
       body: pages[pageIndex],
       bottomNavigationBar: Container(
