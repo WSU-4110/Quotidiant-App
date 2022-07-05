@@ -1,5 +1,6 @@
 part of 'signup_cubit.dart';
 
+// Assignment 4
 enum SignupStatus { initial, submitting, success, error }
 
 class SignupState extends Equatable {

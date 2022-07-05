@@ -5,6 +5,8 @@ import '/repositories/repositories.dart';
 
 part 'login_state.dart';
 
+// Assignment 4
+
 class LoginCubit extends Cubit<LoginState> {
   final AuthRepository _authRepository;
 

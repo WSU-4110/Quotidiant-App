@@ -79,8 +79,11 @@ class AppView extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent),
+      // Assignment 4 FlowBuilder
+      // Handles logic when app is opened
       home: FlowBuilder<AuthStatus>(
         state: context.select((AuthBloc bloc) => bloc.state.status),
+        // Assignment 4
         onGeneratePages: onGenerateAppViewPages,
       ),
       initialRoute: '/',
@@ -88,6 +91,7 @@ class AppView extends StatelessWidget {
         '/home': (context) => Home(),
         '/topics': (context) => Topics(),
         '/likes': (context) => Likes(),
+        '/notifications': (context) => Notifications(),
         '/settings': (context) => Settings(),
       },
     );

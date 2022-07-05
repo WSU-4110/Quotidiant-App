@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 import 'package:quotidiant_app/models/models.dart';
 
+// Assignment 4 Bloc Pattern
+// This class is responsible for interacting with Firebase
 class AuthRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;
 

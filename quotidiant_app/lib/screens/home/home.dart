@@ -26,6 +26,7 @@ class Home extends StatefulWidget {
   const Home({super.key});
 
   static Page page() => const MaterialPage<void>(child: Home());
+
   @override
   _MyAppState createState() => _MyAppState();
 }

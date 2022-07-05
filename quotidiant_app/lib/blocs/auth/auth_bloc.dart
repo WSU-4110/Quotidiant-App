@@ -9,6 +9,7 @@ import 'package:quotidiant_app/repositories/repositories.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
+// Assignment 4
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
   StreamSubscription<User>? _userSubscription;

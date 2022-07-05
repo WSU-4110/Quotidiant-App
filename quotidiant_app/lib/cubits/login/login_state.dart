@@ -1,5 +1,6 @@
 part of 'login_cubit.dart';
 
+// Assignment 4
 enum LoginStatus { initial, submitting, success, error }
 
 class LoginState extends Equatable {

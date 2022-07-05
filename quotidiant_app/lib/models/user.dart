@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// Assignment 4 refactor
 class User extends Equatable {
   final String id;
   final String? email;
