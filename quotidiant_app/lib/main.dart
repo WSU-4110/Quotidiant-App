@@ -11,8 +11,9 @@ import 'package:quotidiant_app/screens/wrapper.dart';
 import 'package:quotidiant_app/services/authentication_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:quotidiant_app/screens/theme/themeapp.dart';
+import 'package:quotidiant_app/screens/theme/theme.dart';
 import 'package:quotidiant_app/screens/theme/ThemeModel.dart';
 import 'package:quotidiant_app/screens/theme/defaulttheme.dart';
 
@@ -41,21 +42,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ThemeModel>(
-          create: (BuildContext context) => ThemeModel(),
-        ),
         Provider<AuthenticationService>(
           create: (_) => AuthenticationService(),
         ),
       ],
       child: MaterialApp(
         title: 'Quotidiant',
-        theme: ThemeData(
-          primaryColor: Colors.blueGrey,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-        ),
+        theme: ThemeData.light()
+        darkTheme: ThemeData.dark()
+        themeMode: preferences.ThemeMode,
+        home: HomePage(),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
@@ -64,6 +60,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => Login(),
           '/register': (context) => Register(),
           '/likes': (context) => Likes(),
+          
         },
       ),
     );
@@ -221,4 +218,12 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+enum ThemeMode{
+  system, //for system mode.. use the default system color if chose
+
+  light, //for light mode.. use dark mode if available
+
+  dark, //for dark mode.. use dark mode if available
 }

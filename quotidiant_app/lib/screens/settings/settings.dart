@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quotidiant_app/main.dart';
 import 'package:provider/provider.dart';
-import 'package:quotidiant_app/screens/theme/ThemeModel.dart';
 
 //Matthew Merge Test
 
