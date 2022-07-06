@@ -86,14 +86,6 @@ class AppView extends StatelessWidget {
         // Assignment 4
         onGeneratePages: onGenerateAppViewPages,
       ),
-      // initialRoute: '/',
-      // routes: {
-      //   '/home': (context) => Home(),
-      //   '/topics': (context) => Topics(),
-      //   '/likes': (context) => Likes(),
-      //   '/notifications': (context) => Notifications(),
-      //   '/settings': (context) => Settings(),
-      // },
     );
   }
 }
