@@ -25,8 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.select((AuthBloc bloc) => bloc.state.user);
-
     return Scaffold(
       backgroundColor: const Color(0xffC4DFCB),
       appBar: AppBar(
