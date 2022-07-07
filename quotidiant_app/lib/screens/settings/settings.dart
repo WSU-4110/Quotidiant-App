@@ -25,6 +25,7 @@ class _SettingsState extends State<Settings> {
           body: ListView(
             children: <Widget>[
               RadioListTile(
+                title: const Text("Dark"),
                 value: ThemeMode.dark,
                 groupValue: preferences.themeMode,
                 onChanged: (_) {

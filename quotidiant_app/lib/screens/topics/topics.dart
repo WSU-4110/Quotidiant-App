@@ -195,7 +195,7 @@ class _TopicsState extends State<Topics> {
                   width: 500,
                   child: ListTile(
                     leading: Checkbox(
-                      value: _checkBoxVal2,
+                      value: _checkBoxVal8,
                       onChanged: (bool? value) {
                         setState(() {
                           _checkBoxVal2 = value!;
@@ -216,7 +216,7 @@ class _TopicsState extends State<Topics> {
                   width: 500,
                   child: ListTile(
                     leading: Checkbox(
-                      value: _checkBoxVal2,
+                      value: _checkBoxVal9,
                       onChanged: (bool? value) {
                         setState(() {
                           _checkBoxVal2 = value!;
@@ -237,7 +237,7 @@ class _TopicsState extends State<Topics> {
                   width: 500,
                   child: ListTile(
                     leading: Checkbox(
-                      value: _checkBoxVal2,
+                      value: _checkBoxVal10,
                       onChanged: (bool? value) {
                         setState(() {
                           _checkBoxVal2 = value!;
