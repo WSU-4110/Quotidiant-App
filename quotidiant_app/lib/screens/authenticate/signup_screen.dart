@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/cubits/cubits.dart';
-import '/repositories/repositories.dart';
+import 'package:quotidiant_app/data/repositories/auth_repository.dart';
 
 // Assignment 4
 class SignupScreen extends StatelessWidget {

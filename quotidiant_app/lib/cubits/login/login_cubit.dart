@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '/repositories/repositories.dart';
+import 'package:quotidiant_app/data/repositories/auth_repository.dart';
 
 part 'login_state.dart';
 

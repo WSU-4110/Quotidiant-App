@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/cubits/cubits.dart';
-import '/repositories/repositories.dart';
+import 'package:quotidiant_app/data/repositories/auth_repository.dart';
 import '/screens/screens.dart';
 
 // Assignment4

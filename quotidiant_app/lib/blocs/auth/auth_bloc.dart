@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:quotidiant_app/models/models.dart';
-import 'package:quotidiant_app/repositories/repositories.dart';
+import 'package:quotidiant_app/data/models/models.dart';
+import 'package:quotidiant_app/data/repositories/auth_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

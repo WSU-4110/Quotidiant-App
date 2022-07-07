@@ -22,7 +22,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flow_builder/flow_builder.dart';
-import '/repositories/repositories.dart';
+import 'package:quotidiant_app/data/repositories/auth_repository.dart';
 import '/bloc_observer.dart';
 import '/blocs/blocs.dart';
 import 'config/routes.dart';
