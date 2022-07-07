@@ -23,9 +23,9 @@ class Preferences {
   @override
   int get hashCode => themeMode.hashCode;
 
-  Preferences copyWith({
+  Preferences copyWith(
     ThemeMode? themeMode,
-  }) {
+  ) {
     return Preferences(
       themeMode ?? this.themeMode,
     );
