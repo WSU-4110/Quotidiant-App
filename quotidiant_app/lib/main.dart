@@ -87,43 +87,31 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Here, we utilize a FutureBuilder because we will be expecting
-    // a bloc of Preferences from the buildBloc method asynchronously.
+    //futurebuilder because preferences from bluilcbloc
     return FutureBuilder<PreferencesCubit>(
       future: buildBloc(),
       builder: (context, blocSnapshot) {
         if (blocSnapshot.hasData && blocSnapshot.data != null) {
-          // Utilize a BlocBuilder to delegate control of the theme
-          // to the Preferences bloc.
+          //blocBuilder to control the theme
           return BlocProvider(
               create: (_) => blocSnapshot.data!,
-              // We need a BlocBuilder to build the MaterialApp and giving
-              // control to the Preferences bloc such that it can provide
-              // the correct theme mode via the Preferences data.
               child: BlocBuilder<PreferencesCubit, Preferences>(
                 builder: (context, preferences) => MaterialApp(
                   debugShowCheckedModeBanner: false,
                   title: 'Flutter Demo',
-                  // Change theme data of light and dark such that each
-                  // utilize the deep purple color for the background of app bars
-                  // and the text for the TextButtons are different.
+                  // Change theme data of light and dark
                   theme: ThemeData.light().copyWith(
                     appBarTheme: const AppBarTheme(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: Color.fromARGB(255, 8, 102, 165),
                     ),
                   ),
                   darkTheme: ThemeData.dark().copyWith(
                     appBarTheme: const AppBarTheme(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: Color.fromARGB(255, 8, 102, 165),
                     ),
                   ),
-                  // PreferencesBloc is utilized here to control the themeMode
-                  // of the application by using its preferences member
-                  // depending on whether the app was just opened or if the user
-                  // changed the theme in the settings.
+                  // PreferencesBloc is here to control the themeMode
                   themeMode: preferences.themeMode,
-                  // BlocProvider provides the AuthBloc instance and has a child widget
-                  // which is the HomePage (since the widget must return a BlocBuilder).
                   home: FlowBuilder<AuthStatus>(
                     state: context.select((AuthBloc bloc) => bloc.state.status),
                     onGeneratePages: onGenerateAppViewPages,
