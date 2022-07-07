@@ -14,10 +14,6 @@ import 'package:quotidiant_app/screens/topics/topics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-import 'package:quotidiant_app/screens/theme/themeapp.dart';
-import 'package:quotidiant_app/screens/theme/ThemeModel.dart';
-import 'package:quotidiant_app/screens/theme/defaulttheme.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
