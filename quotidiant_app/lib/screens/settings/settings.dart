@@ -19,11 +19,22 @@ class _SettingsState extends State<Settings> {
     return BlocBuilder<PreferencesCubit, Preferences>(
       builder: (context, preferences) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text('Themes Demo'),
-          ),
           body: ListView(
             children: <Widget>[
+              const Divider(color: Colors.black),
+              Container(
+                child: const Center(
+                  child: Text(
+                    "Settings",
+                    // ignore: prefer_const_constructors
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(),
               RadioListTile(
                 title: const Text("Dark"),
                 value: ThemeMode.dark,
