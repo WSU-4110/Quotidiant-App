@@ -25,10 +25,11 @@ class _TopicsState extends State<Topics> {
     return Container(
         // ignore: dead_code
         child: ListView(children: <Widget>[
+      const Divider(color: Colors.black),
       Container(
         child: const Center(
           child: Text(
-            "Topics you enjoy:",
+            "Topics you Enjoy!",
             // ignore: prefer_const_constructors
             style: TextStyle(
               fontSize: 24,
@@ -37,6 +38,7 @@ class _TopicsState extends State<Topics> {
           ),
         ),
       ),
+      const Divider(),
       Column(
         children: <Widget>[
           Align(
