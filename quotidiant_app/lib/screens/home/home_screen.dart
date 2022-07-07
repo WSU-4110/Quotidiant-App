@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffC4DFCB),
       appBar: AppBar(
         leading: Icon(
           Icons.menu,
@@ -39,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
               fontWeight: FontWeight.w600,
             )),
         centerTitle: true,
-        backgroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),
@@ -50,9 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: pages[pageIndex],
       bottomNavigationBar: Container(
         height: 60,
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: const BorderRadius.only(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -70,12 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: pageIndex == 0
                   ? const Icon(
                       Icons.home_filled,
-                      color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
                       Icons.home_outlined,
-                      color: Colors.white,
                       size: 35,
                     ),
             ),
@@ -89,12 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: pageIndex == 1
                   ? const Icon(
                       Icons.thumb_up_rounded,
-                      color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
                       Icons.thumb_up_outlined,
-                      color: Colors.white,
                       size: 35,
                     ),
             ),
@@ -108,12 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: pageIndex == 2
                   ? const Icon(
                       Icons.notification_add_rounded,
-                      color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
                       Icons.notification_add_outlined,
-                      color: Colors.white,
                       size: 35,
                     ),
             ),
@@ -127,12 +118,10 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: pageIndex == 3
                   ? const Icon(
                       Icons.anchor_rounded,
-                      color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
                       Icons.anchor_rounded,
-                      color: Colors.white,
                       size: 35,
                     ),
             ),
@@ -146,12 +135,10 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: pageIndex == 4
                   ? const Icon(
                       Icons.settings_applications_rounded,
-                      color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
                       Icons.settings_applications_outlined,
-                      color: Colors.white,
                       size: 35,
                     ),
             ),

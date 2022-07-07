@@ -21,19 +21,16 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       // ignore: dead_code
       child: ListView(
         children: <Widget>[
           const Divider(color: Colors.black),
           Container(
-            color: Colors.white,
             child: const Center(
               child: Text(
                 "Days to Be Notified:",
                 // ignore: prefer_const_constructors
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.w900,
                 ),
@@ -190,12 +187,10 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
           ),
           const Divider(color: Colors.black),
           Container(
-            color: Colors.white,
             child: const Center(
               child: Text(
                 "Notification Time: ",
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.w900,
                 ),
@@ -207,8 +202,6 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
             value: dropdownValue,
             icon: const Icon(Icons.access_time_outlined),
             elevation: 16,
-            dropdownColor: Colors.white,
-            style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
             onChanged: (String? newValue) {
               setState(() {
                 dropdownValue = newValue!;
@@ -228,12 +221,10 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
           ),
           const Divider(color: Colors.black),
           Container(
-            color: Colors.white,
             child: const Center(
               child: Text(
                 "Number of Notifications",
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.w900,
                 ),
