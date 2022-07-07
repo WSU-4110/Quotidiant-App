@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-import 'package:quotidiant_app/models/models.dart';
+import '../models/models.dart';
 
 // Assignment 4 Bloc Pattern
 // This class is responsible for interacting with Firebase
