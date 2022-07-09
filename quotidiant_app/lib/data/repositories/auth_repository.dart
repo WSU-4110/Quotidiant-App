@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 import '../models/models.dart';
@@ -28,8 +29,15 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      // add user data to Users firebase collection
+      _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => {
+                FirebaseFirestore.instance
+                    .collection('Users')
+                    .doc(value.user?.uid)
+                    .set({"email": value.user?.email, "likes": null})
+              });
     } catch (_) {}
   }
 
