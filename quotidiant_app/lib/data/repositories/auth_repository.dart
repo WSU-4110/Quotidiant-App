@@ -29,6 +29,7 @@ class AuthRepository {
     required String password,
   }) async {
     try {
+      List<String> likes = [];
       // add user data to Users firebase collection
       _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password)
@@ -36,7 +37,7 @@ class AuthRepository {
                 FirebaseFirestore.instance
                     .collection('Users')
                     .doc(value.user?.uid)
-                    .set({"email": value.user?.email, "likes": null})
+                    .set({"email": value.user?.email, "likes": {}})
               });
     } catch (_) {}
   }

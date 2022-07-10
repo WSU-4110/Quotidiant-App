@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,9 +63,10 @@ Future<ChuckNorris> getChuckNorrisd() async {
 void main() => runApp(const Home());
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   static Page page() => const MaterialPage<void>(child: HomeScreen());
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -86,31 +88,54 @@ class _MyAppState extends State<Home> {
   Widget build(BuildContext context) {
     final user = context.select((AuthBloc bloc) => bloc.state.user);
 
+    var data;
     //final user = context.select((AuthBloc bloc) => bloc.state.user);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fetch Data Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Welcome ${user.email}!'),
         ),
         body: Center(
-          child: FutureBuilder<ChuckNorris>(
-            future: chuckNorris,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.value!);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
+          child: Column(
+            children: [
+              FutureBuilder<ChuckNorris>(
+                future: chuckNorris,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    data = snapshot.data!.value!;
+                    return Text(snapshot.data!.value!);
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  return const CircularProgressIndicator();
+                },
+              ),
+              FloatingActionButton(
+                  onPressed: (() {
+                    FirebaseAuth _auth = FirebaseAuth.instance;
+                    FirebaseFirestore _db = FirebaseFirestore.instance;
+                    FirebaseFirestore.instance
+                        .collection('Users')
+                        .doc(_auth.currentUser?.uid)
+                        .update({
+                      "likes": FieldValue.arrayUnion([data])
+                    });
+                  }),
+                  child: const Icon(Icons.thumb_up)),
+            ],
           ),
         ),
       ),
     );
+  }
+}
+
+class AddData extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
