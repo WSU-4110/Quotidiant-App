@@ -14,9 +14,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Quotidiant')),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(200.0),
         child: BlocProvider(
           create: (_) => LoginCubit(context.read<AuthRepository>()),
           child: const LoginForm(),
@@ -61,7 +61,16 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) {
             context.read<LoginCubit>().emailChanged(email);
           },
-          decoration: const InputDecoration(labelText: 'email'),
+          decoration: InputDecoration(
+            labelText: 'Enter your email address...',
+            labelStyle:
+                MaterialStateTextStyle.resolveWith((Set<MaterialState> states) {
+              final Color color = states.contains(MaterialState.error)
+                  ? Theme.of(context).errorColor
+                  : Colors.white;
+              return TextStyle(color: color, letterSpacing: 1.3);
+            }),
+          ),
         );
       },
     );
@@ -78,7 +87,16 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (password) {
             context.read<LoginCubit>().passwordChanged(password);
           },
-          decoration: const InputDecoration(labelText: 'password'),
+          decoration: InputDecoration(
+            labelText: 'Enter your password...',
+            labelStyle:
+                MaterialStateTextStyle.resolveWith((Set<MaterialState> states) {
+              final Color color = states.contains(MaterialState.error)
+                  ? Theme.of(context).errorColor
+                  : Colors.white;
+              return TextStyle(color: color, letterSpacing: 1.3);
+            }),
+          ),
           obscureText: true,
         );
       },
