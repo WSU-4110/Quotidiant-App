@@ -197,7 +197,7 @@ class _TopicsState extends State<Topics> {
                   value: _checkBoxVal8,
                   onChanged: (bool? value) {
                     setState(() {
-                      _checkBoxVal2 = value!;
+                      _checkBoxVal8 = value!;
                     });
                   },
                 ),
@@ -218,7 +218,7 @@ class _TopicsState extends State<Topics> {
                   value: _checkBoxVal9,
                   onChanged: (bool? value) {
                     setState(() {
-                      _checkBoxVal2 = value!;
+                      _checkBoxVal9 = value!;
                     });
                   },
                 ),
@@ -239,7 +239,7 @@ class _TopicsState extends State<Topics> {
                   value: _checkBoxVal10,
                   onChanged: (bool? value) {
                     setState(() {
-                      _checkBoxVal2 = value!;
+                      _checkBoxVal10 = value!;
                     });
                   },
                 ),
