@@ -61,18 +61,31 @@ class _MyAppState extends State<Home> {
                   return const CircularProgressIndicator();
                 },
               ),
-              FloatingActionButton(
-                  onPressed: (() {
-                    FirebaseAuth _auth = FirebaseAuth.instance;
-                    FirebaseFirestore _db = FirebaseFirestore.instance;
-                    FirebaseFirestore.instance
-                        .collection('Users')
-                        .doc(_auth.currentUser?.uid)
-                        .update({
-                      "likes": FieldValue.arrayUnion([data])
-                    });
-                  }),
-                  child: const Icon(Icons.thumb_up)),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FloatingActionButton(
+                        onPressed: (() {
+                          FirebaseAuth _auth = FirebaseAuth.instance;
+                          FirebaseFirestore _db = FirebaseFirestore.instance;
+                          FirebaseFirestore.instance
+                              .collection('Users')
+                              .doc(_auth.currentUser?.uid)
+                              .update({
+                            "likes": FieldValue.arrayUnion([data])
+                          });
+                        }),
+                        child: const Icon(Icons.thumb_up)),
+                    FloatingActionButton(
+                        onPressed: () {},
+                        child: const Icon(Icons.arrow_back_ios)),
+                    FloatingActionButton(
+                        onPressed: () {},
+                        child: const Icon(Icons.arrow_forward_ios))
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -80,6 +93,8 @@ class _MyAppState extends State<Home> {
     );
   }
 }
+
+//Api calling
 
 Future<String> Randomize() async {
   // game of thrones
