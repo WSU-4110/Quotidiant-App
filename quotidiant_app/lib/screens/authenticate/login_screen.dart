@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:quotidiant_app/screens/authenticate/password_reset';
 
 import '/cubits/cubits.dart';
 import 'package:quotidiant_app/data/repositories/auth_repository.dart';
@@ -142,3 +143,20 @@ class _SignupButton extends StatelessWidget {
     );
   }
 }
+/*
+class ResetScreen extends StatelessWidget {
+  const ResetScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      TextButton(
+        child: Text('Forgot Password?'),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => ResetScreen()),
+        ),
+      )
+    ]);
+  }
+}
+*/
