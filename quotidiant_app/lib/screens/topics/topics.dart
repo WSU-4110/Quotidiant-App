@@ -54,7 +54,7 @@ class _TopicsState extends State<Topics> {
                     });
                   },
                 ),
-                title: const Text("Topic"),
+                title: const Text("Chuck Norris"),
               ),
             ),
           ),
@@ -75,7 +75,7 @@ class _TopicsState extends State<Topics> {
                     });
                   },
                 ),
-                title: const Text("Topic"),
+                title: const Text("Useless random facts"),
               ),
             ),
           ),
@@ -96,7 +96,7 @@ class _TopicsState extends State<Topics> {
                     });
                   },
                 ),
-                title: const Text("Topic"),
+                title: const Text("Game of Thrones"),
               ),
             ),
           ),
@@ -117,7 +117,7 @@ class _TopicsState extends State<Topics> {
                     });
                   },
                 ),
-                title: const Text("Topic"),
+                title: const Text("Random number facts"),
               ),
             ),
           ),
