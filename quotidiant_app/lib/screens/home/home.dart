@@ -79,9 +79,6 @@ class _MyAppState extends State<Home> {
                         child: const Icon(Icons.thumb_up)),
                     FloatingActionButton(
                         onPressed: () {},
-                        child: const Icon(Icons.arrow_back_ios)),
-                    FloatingActionButton(
-                        onPressed: () {},
                         child: const Icon(Icons.arrow_forward_ios))
                   ],
                 ),
