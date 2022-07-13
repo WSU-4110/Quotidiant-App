@@ -49,6 +49,7 @@ dependencies:
   shared_preferences: ^2.0.15
   json_serializable: ^6.2.0
   json_annotation: ^4.5.0
+  flutter_native_splash: ^2.2.4
 
 dev_dependencies:
   build_runner: ^2.1.11
@@ -65,6 +66,12 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_native_splash:
+  android: true
+  ios: true
+  color: "#071b5d"
+  image: assets/logos/splash_screen_logo.png
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -104,3 +111,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
