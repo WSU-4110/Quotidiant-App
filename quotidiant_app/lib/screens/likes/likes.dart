@@ -7,30 +7,14 @@ class Likes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // ignore: dead_code
-        child: ListView(children: <Widget>[
-      const Divider(color: Colors.black),
-      Container(
-        child: const Center(
-          child: Text(
-            "Favorites",
-            // ignore: prefer_const_constructors
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-      ),
-      const Divider(),
-      GetLikes()
-    ]));
+    return GetLikes();
   }
 }
 
 class GetLikes extends StatelessWidget {
   final String documentId = "GAWChSgtDzdZyIhkJYQ8WDhYztn1";
+
+  const GetLikes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +35,23 @@ class GetLikes extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
-          List<dynamic> likes = data["likes"];
-          return Text("likes: ${likes[0]}");
+          Iterable<dynamic> likes = data["likes"];
+          return ListView.builder(
+              itemCount: likes.length,
+              itemBuilder: (context, index) {
+                // Individual quote in the Iterable of CloudQuotes
+                final liked = likes.elementAt(index) as String;
+                return Card(
+                  child: ListTile(
+                    title: Text(
+                      liked,
+                      softWrap: true,
+                    ),
+                  ),
+                );
+              });
+          //return Text("${likes.elementAt(0)}");
         }
-
         return Text("loading");
       },
     );
