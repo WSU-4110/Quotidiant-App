@@ -41,46 +41,55 @@ class _MyAppState extends State<Home> {
         title: Text('Welcome ${user.email}!'),
       ),
       body: Center(
-        child: Column(
-          children: [
-            FutureBuilder<String>(
-              future: Randomize(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  data = snapshot.data;
-                  return Text(
-                    snapshot.data!,
-                    textAlign: TextAlign.center,
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                return const CircularProgressIndicator();
-              },
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(0, 200, 0, 200),
+            child: Column(
+              children: [
+                FutureBuilder<String>(
+                  future: Randomize(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      data = snapshot.data;
+                      return Text(
+                        snapshot.data!,
+                        textAlign: TextAlign.center,
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
+                  },
+                ),
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                            onPressed: (() {
+                              FirebaseAuth _auth = FirebaseAuth.instance;
+                              FirebaseFirestore _db =
+                                  FirebaseFirestore.instance;
+                              FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(_auth.currentUser?.uid)
+                                  .update({
+                                "likes": FieldValue.arrayUnion([data])
+                              });
+                            }),
+                            child: const Icon(Icons.thumb_up)),
+                        FloatingActionButton(
+                            onPressed: () {},
+                            child: const Icon(Icons.arrow_forward_ios))
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                      onPressed: (() {
-                        FirebaseAuth _auth = FirebaseAuth.instance;
-                        FirebaseFirestore _db = FirebaseFirestore.instance;
-                        FirebaseFirestore.instance
-                            .collection('Users')
-                            .doc(_auth.currentUser?.uid)
-                            .update({
-                          "likes": FieldValue.arrayUnion([data])
-                        });
-                      }),
-                      child: const Icon(Icons.thumb_up)),
-                  FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(Icons.arrow_forward_ios))
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
