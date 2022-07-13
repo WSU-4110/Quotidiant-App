@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '/blocs/blocs.dart';
 import '../screens.dart';
+import 'package:quotidiant_app/screens/home/NavBar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,11 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
-          color: Theme.of(context).primaryColor,
-        ),
         title: Text('Quotidiant',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
