@@ -1,24 +1,9 @@
-import 'dart:html';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:quotidiant_app/blocs/preferences_bloc.dart';
-
-import 'package:quotidiant_app/screens/home/home.dart';
-import 'package:quotidiant_app/screens/likes/likes.dart';
-import 'package:quotidiant_app/screens/notifications/notifications.dart';
-import 'package:quotidiant_app/screens/screens.dart';
-import 'package:quotidiant_app/screens/settings/settings.dart';
-import 'package:quotidiant_app/screens/topics/topics.dart';
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:quotidiant_app/services/preferences_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
-
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:quotidiant_app/data/repositories/auth_repository.dart';
@@ -124,30 +109,3 @@ class AppView extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     title: 'Quotidiant',
-  //     theme: ThemeData(
-  //         primaryColor: Colors.blueGrey,
-  //         splashColor: Colors.transparent,
-  //         highlightColor: Colors.transparent,
-  //         hoverColor: Colors.transparent),
-  //     // Assignment 4 FlowBuilder
-  //     // Handles logic when app is opened
-  //     home: FlowBuilder<AuthStatus>(
-  //       state: context.select((AuthBloc bloc) => bloc.state.status),
-  //       // Assignment 4
-  //       onGeneratePages: onGenerateAppViewPages,
-  //     ),
-  //   );
-  // }
-

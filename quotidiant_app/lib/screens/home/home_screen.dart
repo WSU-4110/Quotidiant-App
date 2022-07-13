@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
     const Likes(),
     const Notifications(),
     const Topics(),
-    const Settings(),
   ];
 
   @override
@@ -120,23 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   : const Icon(
                       Icons.anchor_rounded,
-                      size: 35,
-                    ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  pageIndex = 4;
-                });
-              },
-              icon: pageIndex == 4
-                  ? const Icon(
-                      Icons.settings_applications_rounded,
-                      size: 35,
-                    )
-                  : const Icon(
-                      Icons.settings_applications_outlined,
                       size: 35,
                     ),
             ),
