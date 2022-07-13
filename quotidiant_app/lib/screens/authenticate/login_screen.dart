@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quotidiant_app/screens/authenticate/password_reset_screen.dart';
 //import 'package:quotidiant_app/screens/authenticate/password_reset';
 
 import '/cubits/cubits.dart';
@@ -46,6 +47,8 @@ class LoginForm extends StatelessWidget {
           _LoginButton(),
           const SizedBox(height: 8),
           _SignupButton(),
+          const SizedBox(height: 4),
+          _ForgotPasswordButton(),
         ],
       ),
     );
@@ -138,6 +141,23 @@ class _SignupButton extends StatelessWidget {
       onPressed: () => Navigator.of(context).push<void>(SignupScreen.route()),
       child: const Text(
         'CREATE ACCOUNT',
+        style: TextStyle(color: Colors.blue),
+      ),
+    );
+  }
+}
+
+class _ForgotPasswordButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        fixedSize: const Size(100, 40),
+      ),
+      onPressed: () => Navigator.of(context).push<void>(ResetScreen().route()),
+      child: const Text(
+        'Forgot Password',
         style: TextStyle(color: Colors.blue),
       ),
     );

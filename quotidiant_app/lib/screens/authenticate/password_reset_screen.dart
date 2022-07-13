@@ -1,9 +1,11 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class ResetScreen extends StatefulWidget {
+  Route route() {
+    return MaterialPageRoute<void>(builder: (_) => ResetScreen());
+  }
+
   @override
   _ResetScreenState createState() => _ResetScreenState();
 }
@@ -14,18 +16,18 @@ class _ResetScreenState extends State<ResetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
-      appBar: AppBar(title: Text('Reset Password'),),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Reset Password'),
+      ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(  
-                hintText: 'Email'
-              ),
-               onChanged: (value) {
+              decoration: InputDecoration(hintText: 'Email'),
+              onChanged: (value) {
                 setState(() {
                   email = value.trim();
                 });
@@ -43,12 +45,10 @@ class _ResetScreenState extends State<ResetScreen> {
                 },
                 color: Theme.of(context).accentColor,
               ),
-
             ],
           ),
-
-        ],),
+        ],
+      ),
     );
   }
 }
-*/
