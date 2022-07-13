@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: Drawer(width: 400, child: NavBar()),
       appBar: AppBar(
         title: Text('Quotidiant',
             style: TextStyle(
