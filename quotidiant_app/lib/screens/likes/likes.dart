@@ -7,7 +7,7 @@ class Likes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetLikes();
+    return const GetLikes();
   }
 }
 
@@ -25,11 +25,11 @@ class GetLikes extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          return const Text("Something went wrong");
         }
 
         if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
+          return const Text("Document does not exist");
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
@@ -41,18 +41,51 @@ class GetLikes extends StatelessWidget {
               itemBuilder: (context, index) {
                 // Individual quote in the Iterable of CloudQuotes
                 final liked = likes.elementAt(index) as String;
-                return Card(
-                  child: ListTile(
-                    title: Text(
-                      liked,
-                      softWrap: true,
-                    ),
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 44),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8, 8, 12, 8),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: const Icon(Icons.favorite)),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      16, 0, 0, 0),
+                                  child: ListTile(
+                                    title: Text(
+                                      liked,
+                                      softWrap: true,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 );
               });
           //return Text("${likes.elementAt(0)}");
         }
-        return Text("loading");
+        return const Text("loading");
       },
     );
   }
