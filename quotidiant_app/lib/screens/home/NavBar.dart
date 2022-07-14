@@ -4,6 +4,7 @@ import 'package:quotidiant_app/blocs/preferences_bloc.dart';
 import 'package:quotidiant_app/main.dart';
 import 'package:provider/provider.dart';
 import 'package:quotidiant_app/models/preferences.dart';
+import 'package:quotidiant_app/screens/home/contactus.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -65,6 +66,15 @@ class _State extends State<NavBar> {
                       );
                 },
               ),
+              ElevatedButton(
+                  child: const Text('Contact Us!'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const contactuswidget()),
+                    );
+                  }),
             ],
           ),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
