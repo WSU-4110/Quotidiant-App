@@ -1,3 +1,5 @@
+// Contact us page Mark Drekh
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class contactuswidget extends StatefulWidget {
@@ -27,7 +29,7 @@ class _contactuswidgetState extends State<contactuswidget> {
       key: scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Align(
+        title: const Align(
           alignment: AlignmentDirectional(-0.1, 0),
           child: Text(
             'Contact Us',
@@ -37,97 +39,82 @@ class _contactuswidgetState extends State<contactuswidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0, 0),
-                child: Text(
-                  'Contact us at Quotidiant@gmail.com',
+      backgroundColor: const Color(0xffeeeeee),
+      body: Column(children: <Widget>[
+        const Text("If there are any concerns or bugs let us know!"),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          child: Column(children: <Widget>[
+            const SizedBox(height: 16.0),
+            const TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                hintText: "Name",
+                border: InputBorder.none,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            const TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                hintText: "Email",
+                border: InputBorder.none,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            const TextField(
+              maxLines: 7,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                hintText: "Message",
+                border: InputBorder.none,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            MaterialButton(
+              height: 60.0,
+              minWidth: double.infinity,
+              color: const Color(0xff333333),
+              onPressed: () {},
+              child: const Text(
+                "SUBMIT",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0, 0.35),
-                child: Text(
-                  '123-456-789',
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0.75),
-                child: Text(
-                  'Check our github link for more help \nhttps://github.com/WSU-4110/Quotidiant-App',
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0.3),
-                child: Text(
-                  'Or send us a message directly here',
-                ),
-              ),
-              TextFormField(
-                controller: theirEmailController,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  hintText: 'Your email address',
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+            ),
+            SafeArea(
+              child: GestureDetector(
+                onTap: () => FocusScope.of(context).unfocus(),
+                child: Column(mainAxisSize: MainAxisSize.max, children: const [
+                  Align(
+                    alignment: AlignmentDirectional(0, .50),
+                    child: Text(
+                      'Contact us at Quotidiant@gmail.com',
                     ),
                   ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+                  Align(
+                    alignment: AlignmentDirectional(0, 0.75),
+                    child: Text(
+                      '123-456-789',
                     ),
                   ),
-                ),
-                textAlign: TextAlign.center,
+                  Align(
+                    alignment: AlignmentDirectional(0, 0.100),
+                    child: Text(
+                      'Check our github link for more help \nhttps://github.com/WSU-4110/Quotidiant-App',
+                    ),
+                  ),
+                ]),
               ),
-              TextFormField(
-                controller: theirMessageController,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  hintText: 'Your message',
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ]),
         ),
-      ),
+      ]),
     );
   }
 }
