@@ -1,43 +1,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 // kam testing push
 class Topics extends StatefulWidget {
   const Topics({Key? key}) : super(key: key);
   @override
-  _TopicsState createState() => _TopicsState();
+  _GameofThrones createState() => _GameofThrones();
 }
 
-class _TopicsState extends State<Topics> {
-  bool _checkBoxVal1 = false;
-  bool _checkBoxVal2 = false;
-  bool _checkBoxVal3 = false;
-  bool _checkBoxVal4 = false;
-  bool _checkBoxVal5 = false;
-  bool _checkBoxVal6 = false;
-  bool _checkBoxVal7 = false;
-  bool _checkBoxVal8 = false;
-  bool _checkBoxVal9 = false;
-  bool _checkBoxVal10 = false;
-
+class _GameofThrones extends State<Topics> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // ignore: dead_code
-        child: ListView(children: <Widget>[
-      const Divider(color: Colors.black),
-      Container(
-        child: const Center(
-          child: Text(
-            "Topics you Enjoy!",
-            // ignore: prefer_const_constructors
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-      ),
+    return CheckboxListTile(
+      title: const Text('Game of Thrones'),
+      value: timeDilation != 1.0,
+      onChanged: (bool? value) {
+        setState(() {
+          timeDilation = value! ? 10.0 : 1.0;
+        });
+      },
+      secondary: const Icon(Icons.fit_screen_rounded),
+    );
+  }
+}
+
+class _ChuckNoris extends State<Topics> {
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+      title: const Text('Chuck Noris'),
+      value: timeDilation != 0.5,
+      onChanged: (bool? value) {
+        setState(() {
+          timeDilation = value! ? 1.0 : 0.5;
+        });
+      },
+      secondary: const Icon(Icons.account_box_rounded),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*
       const Divider(),
       Column(
         children: <Widget>[
@@ -60,6 +79,24 @@ class _TopicsState extends State<Topics> {
           ),
         ],
       ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       Column(
         children: <Widget>[
           Align(
@@ -249,7 +286,9 @@ class _TopicsState extends State<Topics> {
           ),
         ],
       ),
+      
     ]));
   }
 }
+*/
 //deleted extra code
