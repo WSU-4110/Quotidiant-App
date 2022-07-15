@@ -11,6 +11,7 @@ import '../../data/models/chuck_norris.dart';
 import '/blocs/blocs.dart';
 import 'home_screen.dart';
 import 'package:quotidiant_app/data/models/models.dart';
+import 'package:quotidiant_app/screens/topics/topics.dart';
 
 void main() => runApp(const Home());
 
