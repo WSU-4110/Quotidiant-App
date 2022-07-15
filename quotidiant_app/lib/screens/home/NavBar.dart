@@ -4,6 +4,7 @@ import 'package:quotidiant_app/blocs/preferences_bloc.dart';
 import 'package:quotidiant_app/main.dart';
 import 'package:provider/provider.dart';
 import 'package:quotidiant_app/models/preferences.dart';
+import 'package:quotidiant_app/screens/home/aboutus.dart';
 import 'package:quotidiant_app/screens/home/contactus.dart';
 
 class NavBar extends StatefulWidget {
@@ -73,6 +74,15 @@ class _State extends State<NavBar> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const contactuswidget()),
+                    );
+                  }),
+              ElevatedButton(
+                  child: const Text('About Us!'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const aboutuswidget()),
                     );
                   }),
             ],
