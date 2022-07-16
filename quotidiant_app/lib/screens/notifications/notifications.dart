@@ -241,6 +241,38 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                 setState(() => _slider2Val = value);
               }),
           const Divider(color: Colors.black),
+          const SizedBox(height: 30),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Stack(
+              children: <Widget>[
+                Positioned.fill(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: <Color>[
+                          Color.fromARGB(255, 62, 202, 6),
+                          Color.fromARGB(255, 62, 202, 6),
+                          Color.fromARGB(255, 62, 202, 6)
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(16.0),
+                    primary: Color.fromARGB(255, 0, 0, 0),
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                  child: const Center(
+                    child: Text('SAVE'),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
