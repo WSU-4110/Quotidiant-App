@@ -17,6 +17,7 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
   bool _checkBoxVal7 = false;
   double _slider2Val = 3;
   String dropdownValue = '12 AM - 6 AM';
+  List days = [];
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +26,13 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
       child: ListView(
         children: <Widget>[
           const Divider(color: Colors.black),
-          Container(
-            child: const Center(
-              child: Text(
-                "Days to Be Notified:",
-                // ignore: prefer_const_constructors
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900,
-                ),
+          const Center(
+            child: Text(
+              "Days to Be Notified:",
+              // ignore: prefer_const_constructors
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
@@ -265,9 +264,25 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                     primary: Color.fromARGB(255, 0, 0, 0),
                     textStyle: const TextStyle(fontSize: 20),
                   ),
-                  onPressed: () {},
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text('Notification Saved'),
+                      content: Text('You Will Be Notified: $days'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'OK'),
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    ),
+                  ),
                   child: const Center(
-                    child: Text('SAVE'),
+                    child: Text('Save'),
                   ),
                 ),
               ],
