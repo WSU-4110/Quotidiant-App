@@ -1,4 +1,5 @@
 // Contact us page Mark Drekh
+import 'dart:js';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,14 @@ class _contactuswidgetState extends State<contactuswidget> {
       key: scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        leadingWidth: 100,
+        leading: ElevatedButton.icon(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_left_sharp),
+          label: const Text("Back"),
+          style: ElevatedButton.styleFrom(
+              elevation: 0, primary: Colors.transparent),
+        ),
         title: const Align(
           alignment: AlignmentDirectional(-0.1, 0),
           child: Text(
@@ -39,7 +48,6 @@ class _contactuswidgetState extends State<contactuswidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: const Color(0xffeeeeee),
       body: Column(children: <Widget>[
         const Text("If there are any concerns or bugs let us know!"),
         Padding(
@@ -49,7 +57,7 @@ class _contactuswidgetState extends State<contactuswidget> {
             const TextField(
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey,
                 hintText: "Name",
                 border: InputBorder.none,
               ),
@@ -58,7 +66,7 @@ class _contactuswidgetState extends State<contactuswidget> {
             const TextField(
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey,
                 hintText: "Email",
                 border: InputBorder.none,
               ),
@@ -68,7 +76,7 @@ class _contactuswidgetState extends State<contactuswidget> {
               maxLines: 7,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey,
                 hintText: "Message",
                 border: InputBorder.none,
               ),

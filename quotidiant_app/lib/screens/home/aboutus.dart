@@ -14,20 +14,24 @@ class _aboutuswidgetstate extends State<aboutuswidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(25),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          flexibleSpace: Align(
-            alignment: AlignmentDirectional(-0.05, 0),
-            child: Text(
-              'About Quotidiant\n',
-              textAlign: TextAlign.center,
-            ),
-          ),
-          actions: [],
-          elevation: 2,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leadingWidth: 100,
+        leading: ElevatedButton.icon(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_left_sharp),
+          label: const Text("Back"),
+          style: ElevatedButton.styleFrom(
+              elevation: 0, primary: Colors.transparent),
         ),
+        title: const Align(
+          alignment: AlignmentDirectional(-0.1, 0),
+          child: Text(
+            'About Us',
+          ),
+        ),
+        actions: [],
+        elevation: 2,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -39,7 +43,7 @@ class _aboutuswidgetstate extends State<aboutuswidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+                  children: const [
                     Text(
                       'Hello! Welcome to Quotidiant, we are focused on creating an app that sends facts and quotes of your choosing from the API\'s we have gathered all of which can be seein in the topics tab.\n',
                       textAlign: TextAlign.center,
@@ -47,10 +51,10 @@ class _aboutuswidgetstate extends State<aboutuswidget> {
                   ],
                 ),
               ),
-              Text(
+              const Text(
                 'Here you can view where we gathered the API\'s that you see popup in the home page and in the topics page.\n\nhttps://api.gameofthronesquotes.xyz/v1/random\n\nhttps://api.chucknorris.io/jokes/random\n\nhttps://uselessfacts.jsph.pl/random.json?language=e\n',
               ),
-              Text(
+              const Text(
                 'This app was created for Software Engineering at Wayne State university. This app was maintained and developed by Mark, Kam, Zach, Rivan, Rabby and Matt',
               ),
             ],
