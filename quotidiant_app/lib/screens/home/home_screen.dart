@@ -114,11 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 3
                   ? const Icon(
-                      Icons.anchor_rounded,
+                      Icons.apps_outlined,
                       size: 35,
                     )
                   : const Icon(
-                      Icons.anchor_rounded,
+                      Icons.apps_outlined,
                       size: 35,
                     ),
             ),
