@@ -1,43 +1,67 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 
 // kam testing push
+
 class Topics extends StatefulWidget {
   const Topics({Key? key}) : super(key: key);
+
   @override
-  _GameofThrones createState() => _GameofThrones();
+  CheckboxWidgetState createState() => CheckboxWidgetState();
 }
 
-class _GameofThrones extends State<Topics> {
-  @override
-  Widget build(BuildContext context) {
-    return CheckboxListTile(
-      title: const Text('Game of Thrones'),
-      value: timeDilation != 1.0,
-      onChanged: (bool? value) {
-        setState(() {
-          timeDilation = value! ? 10.0 : 1.0;
-        });
-      },
-      secondary: const Icon(Icons.fit_screen_rounded),
-    );
+class CheckboxWidgetState extends State {
+  Map<String, bool> values = {
+    'Game of Thrones': false,
+    'Chuck Norris': false,
+    'Useless Facts': false,
+  };
+
+  var tmpArray = [];
+
+  getCheckboxItems() {
+    values.forEach((key, value) {
+      if (value == true) {
+        tmpArray.add(key);
+      }
+    });
+
+    // Printing all selected items on Terminal screen.
+    print(tmpArray);
+    // Here you will get all your selected Checkbox items.
+
+    // Clear array after use.
+    tmpArray.clear();
   }
-}
 
-class _ChuckNoris extends State<Topics> {
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      title: const Text('Chuck Noris'),
-      value: timeDilation != 0.5,
-      onChanged: (bool? value) {
-        setState(() {
-          timeDilation = value! ? 1.0 : 0.5;
-        });
-      },
-      secondary: const Icon(Icons.account_box_rounded),
-    );
+    return Column(children: <Widget>[
+      TextButton(
+        onPressed: getCheckboxItems,
+        child: const Text(
+          " Save ",
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Expanded(
+        child: ListView(
+          children: values.keys.map((String key) {
+            return new CheckboxListTile(
+              title: new Text(key),
+              value: values[key],
+              onChanged: (bool? value) {
+                setState(() {
+                  values[key] = value!;
+                });
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    ]);
   }
 }
 
