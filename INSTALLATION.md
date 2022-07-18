@@ -2,7 +2,7 @@
 This is how users can get started with with Quotidiant app, first you must have download a software that can run the app. 
 Some softwares that work with the Quotidiant app are flutter, VScode, and andriod studios.
 In those softwares you need to add the extentions andriod sdk, flutter sdk, and Git-scm.
-These will allow you to run the app properly and assuring you have all the right packages needed to run the application
+These will allow you to run the app properly and assuring you have all the right packages needed to run the application.
 
 # VISUAL STUDIO
 We found visual studio to be one of the simpler softwares to run the app off of. 
