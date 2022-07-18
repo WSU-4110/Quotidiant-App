@@ -1,10 +1,10 @@
-#GETTING STARTED
+# GETTING STARTED
 This is how users can get started with with Quotidiant app, first you must have download a software that can run the app. 
 Some softwares that work with the Quotidiant app are flutter, VScode, and andriod studios.
 In those softwares you need to add the extentions andriod sdk, flutter sdk, and Git-scm.
 These will allow you to run the app properly and assuring you have all the right packages needed to run the application
 
-#VISUAL STUDIO
+# VISUAL STUDIO
 We found visual studio to be one of the simpler softwares to run the app off of. 
 After downloading visual studios you will need to get into the terminal and run flutter doctor.
 Flutter doctor checks to see if all the requirements of flutter developments are met.
@@ -17,7 +17,7 @@ If everything is good, you will run "flutter run" to run the application.
 You will see a few options 1, 2, and 3, to which will open the application in differnt browsers.
 Press whichever you have downloaded and you have our app.
 
-#FLUTTER PUB GET
+# FLUTTER PUB GET
 This is shorthand for pub get packages, Flutter pub get is very important when running applications in dart language.
 This is how packages are downloaded to allow you to import librarys to your code.
 Calling it with the word flutter infront of it will make use of the flutter SDK, which will mapp it to the SDK's packages get command.
