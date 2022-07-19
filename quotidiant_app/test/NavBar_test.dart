@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quotidiant_app/screens/home/NavBar.dart';
+import 'package:quotidiant_app/screens/topics/topics.dart';
 
+void main() {
+  testWidgets("Testing if the theme provider package is working.",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        home: Topics(),
+      ),
+    );
+
+    expect(
+      ThemeData.dark,
+      Color.fromARGB(255, 0, 0, 0),
+      reason:
+          'While the system dark is dark theme, the text should be light and the background darker',
+    );
+  });
+}
+
+
+
+/*
 void main() {
   final widget = MaterialApp(
     home: Scaffold(
@@ -13,7 +36,7 @@ void main() {
       ),
     ),
   );
-
+  
   testWidgets('Testing Light Dark widget on click', (tester) async {
     await tester.pumpWidget(widget);
     debugDumpApp();
@@ -21,6 +44,9 @@ void main() {
     expect(RadioListTile, findsNWidgets(2));
   });
 }
+*/
+
+
 
 
 /*
