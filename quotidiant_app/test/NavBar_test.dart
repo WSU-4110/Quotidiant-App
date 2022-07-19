@@ -3,6 +3,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quotidiant_app/screens/home/NavBar.dart';
 
 void main() {
+  final widget = MaterialApp(
+    home: Scaffold(
+      body: ListView(
+        RadioListTile: RadioListTile,
+        onChanged: (value) {
+          ThemeData = ThemeMode.dark;
+        },
+      ),
+    ),
+  );
+
+  testWidgets('Testing Light Dark widget on click', (tester) async {
+    await tester.pumpWidget(widget);
+    debugDumpApp();
+    await tester.tap(find.byType(Radio).first);
+    expect(RadioListTile, findsNWidgets(2));
+  });
+}
+
+
+/*
+void main() {
   testWidgets('Testing about us page button', (tester) async {
     // Build the widget.
     await tester.pumpWidget(const aboutusbutton());
@@ -83,6 +105,7 @@ class _aboutusbuttonState extends State<aboutusbutton> {
   }
 }
 
+*/
 
 
 
