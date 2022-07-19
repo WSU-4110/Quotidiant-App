@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quotidiant_app/screens/home/NavBar.dart';
-import 'package:quotidiant_app/screens/topics/topics.dart';
 
+void main() {
+  testWidgets('Testing settings drawer', (WidgetTester tester) async {
+    final DrawerBarKey = GlobalKey<ScaffoldState>();
+    const displayName = "displayName";
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          key: DrawerBarKey,
+          drawer: const Text(displayName),
+        ),
+      ),
+    );
+
+    DrawerBarKey.currentState?.openDrawer();
+    await tester.pump();
+
+    expect(find.text(displayName), findsOneWidget);
+  });
+}
+
+
+
+/*
 void main() {
   testWidgets("Testing if the theme provider package is working.",
       (WidgetTester tester) async {
@@ -21,6 +44,7 @@ void main() {
     );
   });
 }
+*/
 
 
 
