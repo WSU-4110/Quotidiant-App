@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// kam testing push
+//
 
 class Topics extends StatefulWidget {
   const Topics({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class Topics extends StatefulWidget {
 }
 
 class CheckboxWidgetState extends State {
-  Map<String, bool> values = {
+  static Map<String, bool> values = {
     'Game of Thrones': false,
     'Chuck Norris': false,
     'Useless Facts': false,
@@ -62,4 +62,4 @@ class CheckboxWidgetState extends State {
   }
 }
 
- //deleted unused code
+//deleted unused code
