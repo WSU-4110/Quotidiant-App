@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +13,7 @@ import '/blocs/blocs.dart';
 import 'home_screen.dart';
 import 'package:quotidiant_app/data/models/models.dart';
 import 'package:quotidiant_app/screens/topics/topics.dart';
+import 'package:connectivity/connectivity.dart';
 
 void main() => runApp(const Home());
 
@@ -44,6 +46,14 @@ class _MyAppState extends State<Home> {
       body: Center(
         child: Center(
           child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(
+                      "https://i.picsum.photos/id/114/3264/2448.jpg?hmac=DOmBAsmlq14qncJF_8kOc4zPjtJtVBqmymXphtNHPOA"),
+                  fit: BoxFit.cover),
+            ),
             padding: const EdgeInsets.fromLTRB(0, 200, 0, 200),
             child: Column(
               children: [
@@ -53,6 +63,10 @@ class _MyAppState extends State<Home> {
                     if (snapshot.hasData) {
                       data = snapshot.data;
                       return Text(
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
                         snapshot.data!,
                         textAlign: TextAlign.center,
                       );
@@ -64,7 +78,7 @@ class _MyAppState extends State<Home> {
                 ),
                 Center(
                   child: Container(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -128,7 +142,7 @@ Future<String> Randomize() async {
 
   // useless fact
   UselessFact uselessFactObj = UselessFact();
-  final uselessFactRequest =
+  const uselessFactRequest =
       "https://uselessfacts.jsph.pl/random.json?language=en";
   var url = Uri.parse(uselessFactRequest);
   var response = await http.get(url);
@@ -137,6 +151,19 @@ Future<String> Randomize() async {
     uselessFactObj = uselessFact;
   }
   String? fact = uselessFactObj.text;
+
+  //random trivia
+  //var connectivityResult = await (Connectivity().checkConnectivity());
+  //if (connectivityResult == ConnectivityResult.mobile ||
+  // connectivityResult == ConnectivityResult.wifi) {
+  //final response = await http
+  //.get('http://randomuselessfact.appspot.com/random.txt?language=en');
+  //if (response.statusCode == 200) {
+  //return response.body.toString();
+  //} else {
+  //throw Exception('Failed to load album');
+  //}
+  //}
 
   final homeContentList = <String>[];
   homeContentList.add(gotQuote!);
@@ -147,4 +174,12 @@ Future<String> Randomize() async {
   var element = homeContentList[random.nextInt(homeContentList.length)];
 
   return element.toString();
+}
+
+class TriviaFact {
+  String? get sentence => null;
+
+  static TriviaFact fromJson(jsonDecode) {
+    throw Exception('Failed to load');
+  }
 }

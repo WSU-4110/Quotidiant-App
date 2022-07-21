@@ -21,7 +21,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        body: Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: NetworkImage(
+                "https://i.picsum.photos/id/114/3264/2448.jpg?hmac=DOmBAsmlq14qncJF_8kOc4zPjtJtVBqmymXphtNHPOA"),
+            fit: BoxFit.cover),
+      ),
       // ignore: dead_code
       child: ListView(
         children: <Widget>[
@@ -290,6 +297,6 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
           ),
         ],
       ),
-    );
+    ));
   }
 }
