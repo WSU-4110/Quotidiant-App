@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../blocs/auth/auth_bloc.dart';
 
 // test merge Mark
 class Likes extends StatelessWidget {
@@ -7,21 +9,20 @@ class Likes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetLikes();
+    return const GetLikes();
   }
 }
 
 class GetLikes extends StatelessWidget {
-  final String documentId = "GAWChSgtDzdZyIhkJYQ8WDhYztn1";
-
   const GetLikes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = context.select((AuthBloc bloc) => bloc.state.user);
     CollectionReference users = FirebaseFirestore.instance.collection('Users');
 
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).get(),
+      future: users.doc(user.id).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
