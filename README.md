@@ -35,7 +35,7 @@
 - Create a Quotidiant account with an email address and password
 
 `Navigation bar`
-- At the top of every page will be the the settings side bar on the right and the log out button on the left
+- At the top of every page will be the the settings side bar on the left and the log out button on the right
 - At the botton of every page will be the navigation bar with 4 icons to access the other pages
 
 `Home Page`
