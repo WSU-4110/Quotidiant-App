@@ -57,6 +57,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal1 = value!;
                         });
+                        if (_checkBoxVal1) {
+                          days.add('Monday ');
+                        }
+                        if (!_checkBoxVal1) {
+                          days.removeWhere((str) {
+                            return str == "Monday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Monday"),
@@ -78,6 +86,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal2 = value!;
                         });
+                        if (_checkBoxVal2) {
+                          days.add('Tuesday ');
+                        }
+                        if (!_checkBoxVal2) {
+                          days.removeWhere((str) {
+                            return str == "Tuesday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Tuesday"),
@@ -99,6 +115,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal3 = value!;
                         });
+                        if (_checkBoxVal3) {
+                          days.add('Wednesday ');
+                        }
+                        if (!_checkBoxVal3) {
+                          days.removeWhere((str) {
+                            return str == "Wednesday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Wednesday"),
@@ -120,6 +144,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal4 = value!;
                         });
+                        if (_checkBoxVal4) {
+                          days.add('Thursday ');
+                        }
+                        if (!_checkBoxVal4) {
+                          days.removeWhere((str) {
+                            return str == "Thursday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Thursday"),
@@ -141,6 +173,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal5 = value!;
                         });
+                        if (_checkBoxVal5) {
+                          days.add('Friday');
+                        }
+                        if (!_checkBoxVal5) {
+                          days.removeWhere((str) {
+                            return str == "Friday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Friday"),
@@ -162,6 +202,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal6 = value!;
                         });
+                        if (_checkBoxVal6) {
+                          days.add('Saturday ');
+                        }
+                        if (!_checkBoxVal1) {
+                          days.removeWhere((str) {
+                            return str == "Saturday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Saturday"),
@@ -183,6 +231,14 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         setState(() {
                           _checkBoxVal7 = value!;
                         });
+                        if (_checkBoxVal7) {
+                          days.add('Sunday ');
+                        }
+                        if (!_checkBoxVal7) {
+                          days.removeWhere((str) {
+                            return str == "Sunday ";
+                          });
+                        }
                       },
                     ),
                     title: const Text("Sunday"),
@@ -275,7 +331,8 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
                       title: const Text('Notification Saved'),
-                      content: Text('You Will Be Notified: $days'),
+                      content: Text(
+                          'You Will Be Notified on the following days: ${days.join(',')}; You will recieve $_slider2Val times a day, between $dropdownValue'),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () => Navigator.pop(context, 'Cancel'),
