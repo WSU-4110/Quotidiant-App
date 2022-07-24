@@ -15,11 +15,18 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
   bool _checkBoxVal5 = false;
   bool _checkBoxVal6 = false;
   bool _checkBoxVal7 = false;
+
   double _slider2Val = 3;
+
   String dropdownValue = '12 AM - 6 AM';
+
   List days = [];
   // ignore: non_constant_identifier_names
+
   List Sorted = [];
+
+  String PopText = " ";
+  String Header = " ";
 
   void OrderDay() {
     List<String> orderBy = [
@@ -32,6 +39,7 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
       "Sunday "
     ];
     Sorted.clear();
+
     for (int i = 0; i < orderBy.length; i++) {
       for (int k = 0; k < days.length; k++) {
         if (days[k] == orderBy[i]) {
@@ -42,6 +50,18 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
           break;
         }
       }
+    }
+  }
+
+  void PopUpText() {
+    if (!Sorted.isEmpty) {
+      PopText =
+          ('You Will Be Notified on the following days: ${Sorted.join(',')}; You will recieve $_slider2Val notifications a day, between $dropdownValue');
+      Header = 'Notification Saved';
+    }
+    if (Sorted.isEmpty) {
+      PopText = ('Please select which days you would like to be notified!');
+      Header = 'Notification Error';
     }
   }
 
@@ -355,12 +375,12 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                   ),
                   onPressed: () => {
                     OrderDay(),
+                    PopUpText(),
                     showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Notification Saved'),
-                        content: Text(
-                            'You Will Be Notified on the following days: ${Sorted.join(',')}; You will recieve $_slider2Val notifications a day, between $dropdownValue'),
+                        title: Text(Header),
+                        content: Text(PopText),
                         actions: <Widget>[
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'Cancel'),
