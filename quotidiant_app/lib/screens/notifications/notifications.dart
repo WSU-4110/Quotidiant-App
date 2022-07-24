@@ -18,6 +18,32 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
   double _slider2Val = 3;
   String dropdownValue = '12 AM - 6 AM';
   List days = [];
+  // ignore: non_constant_identifier_names
+  List Sorted = [];
+
+  void OrderDay() {
+    List<String> orderBy = [
+      "Monday ",
+      "Tuesday ",
+      "Wednesday ",
+      "Thursday ",
+      "Friday ",
+      "Saturday ",
+      "Sunday "
+    ];
+    Sorted.clear();
+    for (int i = 0; i < orderBy.length; i++) {
+      for (int k = 0; k < days.length; k++) {
+        if (days[k] == orderBy[i]) {
+          if (!Sorted.contains(days[k])) {
+            Sorted.add(days[k]);
+          }
+
+          break;
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +193,7 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                           _checkBoxVal5 = value!;
                         });
                         if (_checkBoxVal5) {
-                          days.add('Friday');
+                          days.add('Friday ');
                         }
                         if (!_checkBoxVal5) {
                           days.removeWhere((str) {
@@ -198,7 +224,7 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                         if (_checkBoxVal6) {
                           days.add('Saturday ');
                         }
-                        if (!_checkBoxVal1) {
+                        if (!_checkBoxVal6) {
                           days.removeWhere((str) {
                             return str == "Saturday ";
                           });
@@ -320,24 +346,27 @@ class _StatefulWidgetsExampleState extends State<Notifications> {
                     primary: Color.fromARGB(255, 0, 0, 0),
                     textStyle: const TextStyle(fontSize: 20),
                   ),
-                  onPressed: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Notification Saved'),
-                      content: Text(
-                          'You Will Be Notified on the following days: ${days.join(',')}; You will recieve $_slider2Val times a day, between $dropdownValue'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    ),
-                  ),
+                  onPressed: () => {
+                    OrderDay(),
+                    showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Notification Saved'),
+                        content: Text(
+                            'You Will Be Notified on the following days: ${Sorted.join(',')}; You will recieve $_slider2Val notifications a day, between $dropdownValue'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    )
+                  },
                   child: const Center(
                     child: Text('Save'),
                   ),
