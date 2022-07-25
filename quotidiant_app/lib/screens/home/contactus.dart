@@ -3,6 +3,26 @@ import 'dart:js';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+class TestName {
+  static bool? validate(List name) {
+    if (name.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class TestEmail {
+  static bool? validate(List email) {
+    if (email.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
 class contactuswidget extends StatefulWidget {
   const contactuswidget({Key? key}) : super(key: key);
 
