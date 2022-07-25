@@ -65,7 +65,6 @@ class _MyAppState extends State<Home> {
                       return Text(
                         style: const TextStyle(
                           fontSize: 20,
-                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         snapshot.data!,
                         textAlign: TextAlign.center,

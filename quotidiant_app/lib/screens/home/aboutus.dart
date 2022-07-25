@@ -38,25 +38,25 @@ class _aboutuswidgetstate extends State<aboutuswidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [
-              SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [
-                    Text(
-                      'Hello! Welcome to Quotidiant, we are focused on creating an app that sends facts and quotes of your choosing from the API\'s we have gathered all of which can be seein in the topics tab.\n',
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+            children: const [
+              Align(
+                alignment: AlignmentDirectional(0, .50),
+                child: Text(
+                  'Hello! Welcome to Quotidiant, we are focused on creating an app that sends facts and quotes of your choosing \nfrom the API\'s we have gathered all of which can be seein in the topics tab.\n',
                 ),
               ),
-              const Text(
-                'Here you can view where we gathered the API\'s that you see popup in the home page and in the topics page.\n\nhttps://api.gameofthronesquotes.xyz/v1/random\n\nhttps://api.chucknorris.io/jokes/random\n\nhttps://uselessfacts.jsph.pl/random.json?language=e\n',
+              Align(
+                alignment: AlignmentDirectional(0, 0.75),
+                child: Text(
+                  'Here you can view where we gathered the API\'s that you see popup in the home page and in the topics page.\n\nhttps://api.gameofthronesquotes.xyz/v1/random\n\nhttps://api.chucknorris.io/jokes/random\n\nhttps://uselessfacts.jsph.pl/random.json?language=e\n',
+                ),
               ),
-              const Text(
-                'This app was created for Software Engineering at Wayne State university. This app was maintained and developed by Mark, Kam, Zach, Rivan, Rabby and Matt',
-              ),
+              Align(
+                alignment: AlignmentDirectional(0, 0.100),
+                child: Text(
+                  'This app was created for Software Engineering at Wayne State university. \nIt was maintained and developed by Mark, Kam, Zach, Rivan, Rabby and Matt',
+                ),
+              )
             ],
           ),
         ),
