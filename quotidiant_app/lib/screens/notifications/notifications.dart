@@ -1,5 +1,47 @@
 import 'package:flutter/material.dart';
 
+//Unit Test Assignment 5
+class CheckBoxValidator {
+  static bool? validate(bool value) {
+    if (value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class DaysSelectedValidator {
+  static String? validate(List value) {
+    return value.isEmpty ? "The List Is Empty" : 'The list is not empty';
+  }
+}
+
+class OrderValidator {
+  static List validate(List value) {
+    List<String> orderBy = [
+      "Monday ",
+      "Tuesday ",
+      "Wednesday ",
+      "Thursday ",
+      "Friday ",
+      "Saturday ",
+      "Sunday "
+    ];
+    List Sorted = [];
+    for (int i = 0; i < orderBy.length; i++) {
+      for (int k = 0; k < value.length; k++) {
+        if (value[k] == orderBy[i]) {
+          Sorted.add(value[k]);
+
+          break;
+        }
+      }
+    }
+    return Sorted;
+  }
+}
+
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
 
