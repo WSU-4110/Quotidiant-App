@@ -14,6 +14,10 @@ class CheckboxWidgetState extends State {
     'Game of Thrones': false,
     'Chuck Norris': false,
     'Useless Facts': false,
+    'Science Facts': false,
+    'Historical Facts': false,
+    'Movies': false,
+    'Games': false,
   };
 
   var tmpArray = [];
