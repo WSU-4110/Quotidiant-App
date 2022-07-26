@@ -44,6 +44,7 @@ class GetLikes extends StatelessWidget {
                 final liked = likes.elementAt(index) as String;
                 return Card(
                   child: ListTile(
+                    trailing: Icon(Icons.auto_delete),
                     title: Text(
                       liked,
                       softWrap: true,
