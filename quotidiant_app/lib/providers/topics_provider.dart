@@ -15,6 +15,9 @@ class TopicSelectedModel extends ChangeNotifier {
     return UnmodifiableListView(_topics);
   }
 
+  // any change in this object class will require rebuilding on the view and
+  // must be signaled using the notifyListeners() (the last call in the method below)
+  // selectTopics instructs Flutter to re-render the UI
   void selectTopics(String? topic, bool isSelected) {
     _topics
         .firstWhere((element) => element.topic == topic)
